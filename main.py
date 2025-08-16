@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
 # input audio file 
-audio_file = input("Enter audio file path: ")
-sample_rate, data = wavfile.read(audio_file)
-
 try:
     audio_file = input("Enter audio file path: ")
     sample_rate, data = wavfile.read(audio_file)
@@ -38,21 +35,21 @@ nyquist_samples = len(magnitude_spectrum)//2
 plt.style.use('dark_background')
 fig, axs = plt.subplots(2, 1, figsize=(10, 7))
 
-fig.suptitle('audio spectrum analyzer')
+fig.suptitle("Audio Spectrum Analyzer")
 
 # plotting audio waveform 
 axs[0].plot(time, left_channel,color="#00fff2")
-axs[0].set_xlabel("time (s)")
-axs[0].set_ylabel("amplitude")
+axs[0].set_xlabel("Time (s)")
+axs[0].set_ylabel("Amplitude")
 axs[0].grid(alpha=0.3)
-axs[0].set_title("audio waveform")
+axs[0].set_title("Audio Waveform")
 
 # plotting frequency spectrum 
 axs[1].plot(freqs[:nyquist_samples], magnitude_spectrum[:nyquist_samples], color="#ff00ea")
-axs[1].set_xlabel("frequency (hz)")
-axs[1].set_ylabel("magnitude")
+axs[1].set_xlabel("Frequency (hz)")
+axs[1].set_ylabel("Magnitude")
 axs[1].grid(alpha=0.3)
-axs[1].set_title("frequency spectrum")
+axs[1].set_title("Frequency spectrum")
 
 fig.tight_layout(pad=0.5)
 plt.show()
